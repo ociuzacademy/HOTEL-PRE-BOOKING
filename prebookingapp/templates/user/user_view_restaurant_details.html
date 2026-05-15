@@ -1,0 +1,61 @@
+{% extends 'user/user_home.html' %}
+{% block content %}
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>Restaurants</h2>
+        </div>
+
+        <div class="filters-content">
+            <div class="row grid">
+                {% for i in data %}
+                <div class="col-sm-6 col-lg-4 all pizza">
+                    <div class="box">
+                        <div>
+                            <div class="img-box">
+                                <img src="{{ i.img.url }}" alt="" style="height: 180; width: 120;">
+                            </div>
+                            <div class="detail-box">
+                            
+                                <h5>{{i.name}}</h5>
+                                <h5>{{i.adrs}}<h5p>
+                                <div class="btn-box">
+                                   
+                                  {% if i.overall_rating %}
+                                      {% for star in "12345" %}
+                                          {% if star|add:0 <= i.overall_rating %}
+                                              <span style="color: gold; font-size: 24px;">&#9733;</span>
+                                          {% else %}
+                                              <span style="color: grey; font-size: 24px;">&#9734;</span>
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% else %}
+                                      No ratings yet
+                                  {% endif %}
+                                
+                                    {{ i.overall_rating|default:"N/A" }}/5   
+                                     
+                                  
+                              </div> <a href="/user_send_feedback/{{i.id}}/" class="transparent-button">Add rating</a>
+                                <div class="options">
+                                    <h6>{{i.phn}}</h6>
+                                    <!-- Display star ratings based on overall rating -->
+                                    
+                                  
+                                    <div class="btn-box">
+                                        <a href="/user_view_menu/?id={{i.id}}">
+                                            Menu
+                                        </a>
+                                    </div>&nbsp;&nbsp;&nbsp;
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

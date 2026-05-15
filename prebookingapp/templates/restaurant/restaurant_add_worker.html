@@ -1,0 +1,48 @@
+{% extends 'restaurant/restaurant_home.html' %}
+{% block content %}
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+        Add Worker
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="/restaurant_add_worker/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                     
+            <div>
+                <input type="text" name="name" class="form-control" placeholder=" name" >
+              </div>
+              <div>
+                <input type="email" name="email" class="form-control" placeholder=" email" />
+              </div>
+            <div>
+                <input type="text" name="adrs" class="form-control" placeholder=" Address" />
+              </div>
+              <div>
+                <input type="text" name="phn" class="form-control" placeholder=" Contact Number" />
+              </div>
+
+              <div>
+                <input type="password" name="pswd" class="form-control" placeholder="password" />
+              </div>
+              <div class="btn_box" type="submit">
+                <button>
+                Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="map_container">
+              <img src="/static/images/f9.png" alt="Your Image Alt Text">
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

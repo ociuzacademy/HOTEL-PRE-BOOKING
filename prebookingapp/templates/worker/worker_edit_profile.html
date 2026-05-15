@@ -1,0 +1,54 @@
+
+{% extends 'worker/worker_home.html' %}
+{% block content %}
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+      Edit Your Profile Here...
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="/worker_edit_profile/" method="post">
+                {% csrf_token %}
+
+                {% for i in data %}
+              <div>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{i.name}}" >
+              </div>
+              <div>
+                <input type="text" name="phn" class="form-control" placeholder="Phone Number"  value="{{i.phn}}" >
+              </div>
+              <div>
+                <input type="email" name="email" class="form-control" placeholder="Your Email"  value="{{i.email}}" >
+              </div>
+              <div>
+                <input type="text" name="adrs" class="form-control" placeholder="Your Address"  value="{{i.adrs}}">
+              </div>
+             
+              
+       
+
+    
+
+              <div class="btn_box" type="submit">
+                <button>
+              submit
+                </button>
+              </div>
+             
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="map_container">
+              <img src="/static/images/f9.png" alt="Your Image Alt Text">
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+  {% endblock %}

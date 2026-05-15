@@ -1,0 +1,79 @@
+{% extends 'worker/worker_home.html' %}
+{% block content %}
+
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>Accepted </h2>
+      </div>
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="text-primary mb-5"><span class="fw-light text-dark"></span></h1>
+        </div>
+        <div class="row g-25">
+            <div class="col-lg-30 wow fadeIn" data-wow-delay="0.1s">
+                <div class="wow fadeIn" data-wow-delay="0.3s">
+                 
+                        <table class="table" border="1" style="color: black;">
+                            <thead>
+                                <tr>
+                                    <th>Sl.No.</th>
+                                    <th>Food Name</th>
+                                    <th>Customer Contact Number</th>
+                                    <th>Customer Address</th>
+                                    <th>Total Price</th>
+                                    <th>Quantity</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in data %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ x.order_id.menu_id.foodcategory }}</td>
+                                    <td>{{ x.order_id.user_id.phn }}</td>
+                                    <td>{{ x.order_id.user_id.adrs }}</td>
+                                    <td>{{ x.order_id.total }}</td>
+                                    <td>{{ x.order_id.cart_id.qnty }}</td>
+                                    <td><a href="/worker_complete_work/?id={{x.id}}" class="btn btn-primary w-60 py-9" style="background-color: rgb(46,31,15); color: white;">Completed</a></td>
+                                   
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5">No Bookings Found.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+</div>
+<style>
+    .table {
+        width: 130%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        background-color: #e4d965; /* Set your desired background color here */
+    }
+
+    .table th, .table td {
+        border: 1px solid #75736c;
+        padding: 9px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: rgb(227, 185, 17);
+    }
+
+
+    
+</style>
+{% endblock %}

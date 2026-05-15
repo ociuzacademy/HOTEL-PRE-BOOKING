@@ -1,0 +1,58 @@
+
+{% extends 'restaurant/restaurant_home.html' %}
+{% block content %}
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+        Edit Your Profile Here...
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="/restaurant_edit_profile/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for i in data %}
+              <div>
+                <input type="text" class="form-control" placeholder="Your Name" name="name" value="{{i.name}}">
+              </div>
+              <div>
+                <input type="text" class="form-control" placeholder="Your Contact Number" name="phn" value="{{i.phn}}">
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Your Email" name="email" value="{{i.email}}">
+              </div>
+              <div>
+                <input type="text" name="adrs" class="form-control" placeholder="Your Address" value="{{i.adrs}}">
+              </div>
+              <div>
+                <div>
+                    <input type="text" name="licence_number" class="form-control" placeholder="Your License Number" value="{{i.licence_number}}">
+                  </div>
+                <input type="text" name="plc" class="form-control" placeholder="Your Place" value="{{i.plc}}">
+              </div>
+              <div>
+                <input type="password" name="pswd" class="form-control" placeholder="Your Password" value="{{i.pswd}}">
+              </div>
+              <div>
+                <input type="file" name="img" class="form-control" placeholder="Your Place" value="{{i.img.url}}">
+              </div>
+              <div class="btn_box" type="submit">
+                <button>
+                  Submit
+                </button>
+              </div>
+              {% endfor %}
+            </form>
+          </div>
+        </div>
+        <!-- <div class="col-md-6">
+            <div class="map_container">
+              <img src="/static/images/o1.jpg" alt="Your Image Alt Text">
+            </div>
+          </div> -->
+      </div>
+    </div>
+  </section>
+  {% endblock %}

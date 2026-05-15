@@ -1,0 +1,68 @@
+{% extends 'user/user_home.html' %}
+{% block content %}
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Book A Table
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="" method="post">
+                {% csrf_token %}
+                <!-- <input type="hidden" name="menu_id" value="{{ data.id }}"> -->
+                <input type="hidden" name="restaurant_id" value="{{ data.id }}">
+              <div>
+                <input type="text" class="form-control" placeholder="Your Name" name="name" />
+              </div>
+              <div>
+                <input type="text" class="form-control" placeholder="Phone Number" name="phn"/>
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Your Email" name="email"/>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" placeholder="Items & quantity" name="items" required></textarea>
+            </div>
+            
+              <div>
+                <div>
+                    <input type="number" class="form-control" placeholder="How Many Members?" name="totalguest"/>
+                  </div>
+              </div>
+              <div>
+                <input type="date" class="form-control" name="date">
+              </div>
+
+              <div>
+                <input type="time" class="form-control" placeholder="Your Email" name="time"/>
+              </div>
+              <div class="btn_box">
+                <button>
+                  Book Now
+                </button>
+              </div>
+            </form>
+            {% if success %}
+    <script>
+        // Display alert in a pop-up window
+        var message = "Booking Successfull";
+        alert(message);
+
+        // Redirect to the login page after clicking "OK"
+        window.location.href = "/user_view_booking";
+    </script>
+{% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="map_container">
+              <img src="/static/images/f9.png" alt="Your Image Alt Text">
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

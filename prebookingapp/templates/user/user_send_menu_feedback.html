@@ -1,0 +1,90 @@
+
+{% extends 'user/user_home.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+         Send Feedback
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="" method="post">
+                {% csrf_token %}
+             
+                <!-- <input type="text" name="menu_id" value="{{ data.id }}"> -->
+                <input type="hidden" name="restaurant_id" value="{{ data.id }}">
+             
+                <div class="col-12">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a Feedback here" id="message" style="height: 150px" name="msg" ></textarea>
+                        <label for="message"></label>
+                    </div>
+                </div>
+               
+                <h2>Rating</h2>
+                <span class="fa fa-star" onclick="rateStar(1)"></span>
+                <span class="fa fa-star" onclick="rateStar(2)"></span>
+                <span class="fa fa-star" onclick="rateStar(3)"></span>
+                <span class="fa fa-star" onclick="rateStar(4)"></span>
+                <span class="fa fa-star" onclick="rateStar(5)"></span>
+                
+                <input type="hidden" name="ratings" id="rateStar"> 
+                <script>
+                  function rateStar(rating) {
+                    var stars = document.querySelectorAll('.fa-star');
+                    var ratingInput = document.getElementById('rateStar');
+                    stars.forEach(function(star, index) {
+                      if (index < rating) {
+                        star.classList.add('checked');
+                      } else {
+                        star.classList.remove('checked');
+                      }
+                    });
+                    ratingInput.value = rating;
+                    console.log("Rating: " + rating);
+                  }
+                </script>
+
+              <div class="btn_box" type="submit">
+                <button>
+                Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="map_container">
+              <img src="/static/images/f9.png" alt="Your Image Alt Text">
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- <script>
+    function rateStar(rating) {
+      var stars = document.querySelectorAll('.fa-star');
+      stars.forEach(function(star) {
+        star.classList.remove('checked');
+      });
+      for (var i = 0; i < rating; i++) {
+        stars[i].classList.add('checked');
+      }
+      console.log("Rating: " + rating);
+    }
+    </script> -->
+
+  
+  {% endblock %}

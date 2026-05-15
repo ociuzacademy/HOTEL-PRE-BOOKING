@@ -1,0 +1,37 @@
+{% extends 'restaurant/restaurant_home.html' %}
+{% block content %}
+<section class="food_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          User Feedbacks
+        </h2>
+      </div>
+
+  <h2>Feedback for Restaurant</h2>
+
+  {% for feedback in data %}
+    <div>
+      <p>User: {{ feedback.user_id.name }}</p>
+      <p>Comment: {{ feedback.msg }}</p>
+      
+        {% if feedback.ratings %}
+            {% for star in "12345" %}
+                {% if star|add:0 <= feedback.ratings %}
+                    <span style="color: gold; font-size: 24px;">&#9733;</span>
+                {% else %}
+                    <span style="color: grey; font-size: 24px;">&#9734;</span>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            No ratings yet
+        {% endif %}
+       
+    
+     
+    </div>
+    <hr>
+  {% endfor %}
+    </div>
+  </section>
+{% endblock %}

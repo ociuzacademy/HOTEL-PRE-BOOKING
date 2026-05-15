@@ -1,0 +1,62 @@
+
+{% extends 'user/user_home.html' %}
+{% block content %}
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+        profile
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="" method="post">
+                {% csrf_token %}
+
+                {% for i in data %}
+              <div>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{i.name}}" disabled>
+              </div>
+              <div>
+                <input type="text" name="phn" class="form-control" placeholder="Phone Number"  value="{{i.phn}}" disabled>
+              </div>
+              <div>
+                <input type="email" name="email" class="form-control" placeholder="Your Email"  value="{{i.email}}" disabled>
+              </div>
+              <div>
+                <input type="text" name="adrs" class="form-control" placeholder="Your Address"  value="{{i.adrs}}"disabled>
+              </div>
+              <div>
+                <input type="text" name="plc" class="form-control" placeholder="Your Place"  value="{{i.plc}}" disabled>
+              </div>
+              <div>
+                <input type="password" name="pswd" class="form-control" placeholder="Your Password"  value="{{i.pswd}}" disabled>
+              </div>
+              <div>
+                <div>
+                    <input type="text" name="gender" class="form-control" placeholder="Your Gender"  value="{{i.gender}}" disabled>
+                  </div>
+              </div>
+
+              <div>
+                <input type="date" class="form-control" name="dob"  value="{{i.dob}}" disabled>
+              </div>
+
+              <div class="btn_box">
+                <a href="/user_edit_profile/?id={{i.id}}" class="btn btn-primary w-60 py-9" style="background-color: rgb(46,31,15); color: white;">Edit Profile</a>
+              </div>
+             
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="map_container">
+              <img src="/static/images/f9.png" alt="Your Image Alt Text">
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+  {% endblock %}

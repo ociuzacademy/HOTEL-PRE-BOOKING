@@ -1,0 +1,68 @@
+
+{% extends 'restaurant/restaurant_home.html' %}
+{% block content %}
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+        Add Menu
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="/restaurant_menu/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+             
+            
+              <div>
+                <select id="foodcategory" class="form-control" name="foodcategory">
+                    <option value="select" >Select Food Item</option>
+                    <option value="Buger">Buger</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Biryani">Biryani</option>
+                    <option value="Lime Juice">Lime Juice</option>
+                    <option value="Fries">Fries</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Noodles">Noodles</option>
+                    <option value="KFC">KFC</option>
+                    <option value="Donuts">Donuts</option>
+                    <option value="Fried Rice">Fried Rice</option>
+                    <option value="Butter Chicken">Butter Chicken</option>
+                    <option value="Shawarma">Shawarma</option>
+                    <option value="Strawberry Shake">Strawberry Shake</option>
+                    <option value="Falooda">Falooda</option>
+                </select>
+            </div>
+
+
+            
+            <div>
+                <input type="file" name="img" class="form-control" placeholder="Your Image" >
+              </div>
+              <div>
+                <textarea name="description" class="form-control" placeholder=" description"></textarea>
+            </div>
+            <div>
+                <input type="number" name="price" class="form-control" placeholder=" Price" />
+              </div>
+              <div>
+                <input type="number" name="qnty" class="form-control" placeholder=" Quantity" />
+              </div>
+              <div class="btn_box" type="submit">
+                <button>
+                Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="map_container">
+              <img src="/static/images/f9.png" alt="Your Image Alt Text">
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

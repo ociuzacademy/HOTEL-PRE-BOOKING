@@ -1,0 +1,43 @@
+
+{% extends 'index.html' %}
+{% block content %}
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+    Login
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="/login/" method="post">
+                {% csrf_token %}
+             
+              
+              <div>
+                <input type="email" class="form-control" placeholder="Your Email" name="email">
+              </div>
+              
+                
+               
+              <div>
+                <input type="password" name="pswd" class="form-control" placeholder="Your Password" />
+              </div>
+              <div class="btn_box" type="submit">
+                <button>
+                 Log in
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- <div class="col-md-6">
+            <div class="map_container">
+              <img src="/static/images/o1.jpg" alt="Your Image Alt Text">
+            </div>
+          </div> -->
+      </div>
+    </div>
+  </section>
+  {% endblock %}
